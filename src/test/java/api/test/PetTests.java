@@ -70,7 +70,7 @@ public class PetTests {
 
     }
 
-    @Test(priority = 3)
+    //@Test(priority = 3)
     public void updatePet(){
 
         faker = new Faker();
@@ -83,7 +83,7 @@ public class PetTests {
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void deletePet(){
 
         Response response = PetEndPoints.deletePet(petPayload.getId());

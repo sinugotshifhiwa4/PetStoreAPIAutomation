@@ -15,30 +15,61 @@
     </properties>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.2.2</version>
-                    <configuration>
-                        <suiteXmlFiles>
-                            <suiteXmlFile>testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>
-                    </configuration>
-                </plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!-- Placeholder for profile-specific suiteXmlFile -->
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                        <!-- put your configurations here -->
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <!-- put your configurations here -->
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <property>
+                    <name>Platform</name>
+                    <value>local</value>
+                </property>
+            </activation>
+            <properties>
+                <!-- Specify the local.xml file for this profile -->
+                <suiteXmlFile>local.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>remote</id>
+            <activation>
+                <property>
+                    <name>Platform</name>
+                    <value>remote</value>
+                </property>
+            </activation>
+            <properties>
+                <!-- Specify the remote.xml file for this profile -->
+                <suiteXmlFile>remote.xml</suiteXmlFile>
+            </properties>
+        </profile>
+    </profiles>
+
 
     <dependencies>
         <dependency>
