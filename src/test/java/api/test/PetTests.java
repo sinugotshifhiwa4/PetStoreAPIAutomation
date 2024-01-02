@@ -70,12 +70,16 @@ public class PetTests {
 
     }
 
-    //@Test(priority = 3)
+    @Test(priority = 3)
     public void updatePet(){
 
+        // Use Faker to generate a new name
         faker = new Faker();
+        String newName = faker.animal().name();
 
-        petPayload.setName(faker.animal().name());
+        // Update the pet's name in the payload
+        petPayload.setName(newName);
+
 
         Response response = PetEndPoints.updatePet(petPayload.getId(), this.petPayload);
         response.then().log().all();
@@ -83,7 +87,7 @@ public class PetTests {
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void deletePet(){
 
         Response response = PetEndPoints.deletePet(petPayload.getId());

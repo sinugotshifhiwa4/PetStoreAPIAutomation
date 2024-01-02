@@ -8,8 +8,9 @@
 
     <test verbose="2" preserve-order="true" name="C:/Users/ilabadmin/Documents/Automation Projects/API/PetStoreFramework/PetStoreFramework">
         <classes>
-            <class name="api.test.UserTests"/>
             <class name="api.test.PetTests"/>
+            <class name="api.test.StoreTests"/>
+            <class name="api.test.UserTests"/>
         </classes>
     </test>
 </suite>
