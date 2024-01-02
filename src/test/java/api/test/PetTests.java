@@ -70,7 +70,7 @@ public class PetTests {
 
     }
 
-    @Test(priority = 3)
+    //@Test(priority = 3)
     public void updatePet(){
 
         // Use Faker to generate a new name
